@@ -6,13 +6,14 @@ import model.Pet;
 
 
 public class PetTableModel extends AbstractTableModel {
-    public static final int COL_NOME_TUTOR = 0;
-    public static final int COL_CONTATO_TUTOR = 1;
-    public static final int COL_RACA = 2;
-    public static final int COL_NOME_PET = 3;
-    public static final int COL_GENERO = 4;
-    public static final int COL_COR = 5;
-    public static final int COL_DATA = 6;
+    public static final int COL_ID = 0;
+    public static final int COL_NOME_TUTOR = 1;
+    public static final int COL_CONTATO_TUTOR = 2;
+    public static final int COL_RACA = 3;
+    public static final int COL_NOME_PET = 4;
+    public static final int COL_GENERO = 5;
+    public static final int COL_COR = 6;
+    public static final int COL_DATA = 7;
     
     public ArrayList<Pet> listaPets;
     
@@ -24,6 +25,7 @@ public class PetTableModel extends AbstractTableModel {
     public Object getValueAt(int linha, int coluna){
         Pet p = listaPets.get(linha);
         Object conteudo = "";
+        if(coluna == COL_ID){conteudo = p.getId();}
         if(coluna == COL_NOME_TUTOR){conteudo = p.getNome_tutor();}
         if(coluna == COL_CONTATO_TUTOR){conteudo = p.getContato_tutor();}
         if(coluna == COL_RACA){conteudo = p.getRaca();}
@@ -37,7 +39,7 @@ public class PetTableModel extends AbstractTableModel {
     
     @Override
     public int getColumnCount(){
-        return 7;
+        return 8;
     }
     
     @Override
@@ -48,6 +50,7 @@ public class PetTableModel extends AbstractTableModel {
     @Override
     public String getColumnName(int coluna){
         String nome = "";
+        if(coluna == COL_ID){nome = "Código";}
         if(coluna == COL_NOME_TUTOR){nome = "Nome do Tutor";}
         if(coluna == COL_CONTATO_TUTOR){nome = "Contato do Tutor";}
         if(coluna == COL_RACA){nome = "Raça";}

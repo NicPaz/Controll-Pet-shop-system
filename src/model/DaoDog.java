@@ -64,6 +64,7 @@ public ArrayList<Pet> verTodos() {
         
         while (rs.next()) {
             Pet p = new Pet();
+            p.setId(rs.getInt("id"));
             p.setNome_tutor(rs.getString("nome_tutor"));
             p.setContato_tutor(rs.getString("contato_tutor"));
             p.setCep(rs.getString("cep"));
@@ -133,12 +134,14 @@ public ArrayList<Pet> verTodos() {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Pet p = new Pet();
+                p.setId(rs.getInt("id"));
                 p.setNome_tutor(rs.getString("nome_tutor"));
                 p.setContato_tutor(rs.getString("contato_tutor"));
                 p.setNome_pet(rs.getString("nome_pet"));
                 p.setRaca(rs.getString("raca"));
                 p.setGenero(Genero.valueOf(rs.getString("genero")));
                 p.setCor(rs.getString("cor"));
+                p.setDate(rs.getDate("data_entrada"));
                 
                 if (p.getNome_tutor().toLowerCase().contains(termo.toLowerCase()) ||
                     p.getContato_tutor().toLowerCase().contains(termo.toLowerCase()) ||
