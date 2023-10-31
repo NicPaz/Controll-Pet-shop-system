@@ -88,13 +88,80 @@ public ArrayList<Pet> verTodos() {
     return pets;
 }
 
+public ArrayList<Pet> buscarPetsMachos() {
+    ArrayList<Pet> pets = new ArrayList<>();
+    
+    try {
+        this.conectar();
+        String comando = "SELECT * FROM dados_pets WHERE genero = 'Macho';";
+        ResultSet rs = st.executeQuery(comando);
+        
+        while (rs.next()) {
+            Pet p = new Pet();
+            p.setId(rs.getInt("id"));
+            p.setNome_tutor(rs.getString("nome_tutor"));
+            p.setContato_tutor(rs.getString("contato_tutor"));
+            p.setCep(rs.getString("cep"));
+            p.setRua(rs.getString("rua"));
+            p.setNumero_casa(rs.getInt("numero_casa"));
+            p.setBairro(rs.getString("bairro"));
+            p.setNome_pet(rs.getString("nome_pet"));
+            p.setRaca(rs.getString("raca"));
+            p.setGenero(Genero.valueOf(rs.getString("genero")));
+            p.setCor(rs.getString("cor"));
+            p.setDate(rs.getDate("data_entrada"));
+            p.setObservacao(rs.getString("observacao"));
+            pets.add(p);
+        }
+    } catch (Exception e) {
+        System.out.println("Erro ao recuperar pets machos: " + e.getMessage());
+    } finally {
+        this.desconectar();
+    }
+    
+    return pets;
+}
+
+public ArrayList<Pet> buscarPetsFemeas() {
+    ArrayList<Pet> pets = new ArrayList<>();
+    
+    try {
+        this.conectar();
+        String comando = "SELECT * FROM dados_pets WHERE genero = 'Femea';";
+        ResultSet rs = st.executeQuery(comando);
+        
+        while (rs.next()) {
+            Pet p = new Pet();
+            p.setId(rs.getInt("id"));
+            p.setNome_tutor(rs.getString("nome_tutor"));
+            p.setContato_tutor(rs.getString("contato_tutor"));
+            p.setCep(rs.getString("cep"));
+            p.setRua(rs.getString("rua"));
+            p.setNumero_casa(rs.getInt("numero_casa"));
+            p.setBairro(rs.getString("bairro"));
+            p.setNome_pet(rs.getString("nome_pet"));
+            p.setRaca(rs.getString("raca"));
+            p.setGenero(Genero.valueOf(rs.getString("genero")));
+            p.setCor(rs.getString("cor"));
+            p.setDate(rs.getDate("data_entrada"));
+            p.setObservacao(rs.getString("observacao"));
+            pets.add(p);
+        }
+    } catch (Exception e) {
+        System.out.println("Erro ao recuperar pets machos: " + e.getMessage());
+    } finally {
+        this.desconectar();
+    }
+    
+    return pets;
+}
 
     public boolean atualizar(Pet p) {
         boolean resultado = false;
         
         try {
             this.conectar();
-            String comando = "UPDATE dados_pets SET nome_tutor='" + p.getNome_tutor() + "', contato_tutor='" + p.getContato_tutor() + "', cep='" + p.getCep() + "', rua='" + p.getRua() + "', numero_casa=" + p.getNumero_casa() + ", bairro='" + p.getBairro() + "', nome_pet='" + p.getNome_pet() + "', raca='" + p.getRaca() + "', genero='" + p.getGenero().name() + "', cor='" + p.getCor() + "', data_entrada='" + p.getDate() + "', observacao='" + p.getObservacao() + "' WHERE id=" + p.getId() + ";";
+            String comando = "UPDATE dados_pets SET nome_tutor='" + p.getNome_tutor() + "', contato_tutor='" + p.getContato_tutor() + "', nome_pet='" + p.getNome_pet() + "', raca='" + p.getRaca() + "', genero='" + p.getGenero() + "', cor='" + p.getCor() + "' WHERE id=" + p.getId() + ";";
             st.executeUpdate(comando);
             resultado = true;
         } catch (Exception e) {

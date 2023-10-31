@@ -8,8 +8,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import model.DaoDog;
 import model.Genero;
@@ -95,6 +93,7 @@ public class TelaCadastroPet extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(249, 233, 210));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 49, 31), 1, true));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel7.setText("Dados do Tutor");
@@ -232,6 +231,7 @@ public class TelaCadastroPet extends javax.swing.JFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(249, 233, 210));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 49, 31), 1, true));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel8.setText("Dados do Pet");
@@ -314,7 +314,7 @@ public class TelaCadastroPet extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tfRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel8))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,7 +368,7 @@ public class TelaCadastroPet extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btCadastro))
                             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 732, Short.MAX_VALUE))
                         .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
@@ -386,7 +386,7 @@ public class TelaCadastroPet extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCadastro)
                     .addComponent(btVoltar))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
