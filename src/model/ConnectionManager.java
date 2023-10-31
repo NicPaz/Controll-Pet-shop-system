@@ -10,7 +10,7 @@ public class ConnectionManager {
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         String url = "jdbc:mysql://localhost/dogcounter?characterEncoding=latin1";
         String usuario = "root";
-        String senha = "bancodedados";
+        String senha = "";
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         conexao = DriverManager.getConnection(url, usuario, senha);
