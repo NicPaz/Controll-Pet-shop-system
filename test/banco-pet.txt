@@ -1,3 +1,4 @@
+DROP DATABASE dogcounter;
 CREATE DATABASE dogcounter;
 
 use dogcounter;
@@ -15,7 +16,12 @@ CREATE TABLE dados_pets (
     genero VARCHAR(255),
     cor VARCHAR(50),
     data_entrada DATETIME,
-    observacao TEXT
+    observacao TEXT,
+    cpf VARCHAR (20),
+    email VARCHAR(255),
+    role VARCHAR(255),
+    genero_user VARCHAR(255),
+    foto_usuario longblob
 );
 
 drop table dados_pets;

@@ -14,6 +14,12 @@ public class PetTableModel extends AbstractTableModel {
     public static final int COL_GENERO = 5;
     public static final int COL_COR = 6;
     public static final int COL_DATA = 7;
+    public static final int COL_CPF = 8;
+    public static final int COL_EMAIL = 9;
+    public static final int COL_ROLE = 10;
+    public static final int COL_GENERO_USUARIO = 11;
+    public static final int COL_FOTO = 12;
+    
     
     public ArrayList<Pet> listaPets;
     
@@ -33,13 +39,18 @@ public class PetTableModel extends AbstractTableModel {
         if(coluna == COL_GENERO){conteudo = p.getGenero();}
         if(coluna == COL_COR){conteudo = p.getCor();}
         if(coluna == COL_DATA){conteudo = p.getDate();}
+        if(coluna == COL_CPF){conteudo = p.getCpf();}
+        if(coluna == COL_EMAIL){conteudo = p.getEmail();}
+        if(coluna == COL_ROLE){conteudo = p.getRole();}
+        if(coluna == COL_GENERO_USUARIO){conteudo = p.getGeneroUser();}
+        if(coluna == COL_FOTO){conteudo = p.getFoto_usuario();}
         
         return conteudo;
     }
     
     @Override
     public int getColumnCount(){
-        return 8;
+        return 13;
     }
     
     @Override
@@ -58,6 +69,11 @@ public class PetTableModel extends AbstractTableModel {
         if(coluna == COL_GENERO){nome = "Gênero";}
         if(coluna == COL_COR){nome = "Cor";}
         if(coluna == COL_DATA){nome = "Data de Entrada";}
+        if(coluna == COL_CPF){nome = "Cpf";}
+        if(coluna == COL_EMAIL){nome = "Email";}
+        if(coluna == COL_ROLE){nome = "Tipo";}
+        if(coluna == COL_GENERO_USUARIO){nome = "Sexo";}
+        if(coluna == COL_FOTO){nome = "Foto";}
         
         return nome;
     }

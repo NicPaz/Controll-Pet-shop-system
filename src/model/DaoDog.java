@@ -1,5 +1,9 @@
 package model;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -7,12 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class DaoDog {
     private Connection conn;
     private java.sql.Statement st;
 
-    private void conectar(){
+    public void conectar(){
         try{
             this.conn = ConnectionManager.getConnection();
             st = conn.createStatement();
@@ -42,7 +48,8 @@ public class DaoDog {
             java.text.SimpleDateFormat sdf = 
                 new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String currentTime = sdf.format(dt);
-            String comando = "INSERT INTO dados_pets (nome_tutor, contato_tutor, cep, rua, numero_casa, bairro, nome_pet, raca, genero, cor, data_entrada, observacao) VALUES ('" + p.getNome_tutor() + "', '" + p.getContato_tutor() + "', '" + p.getCep() + "', '" + p.getRua() + "', " + p.getNumero_casa() + ", '" + p.getBairro() + "', '" + p.getNome_pet() + "', '" + p.getRaca() + "', '" + p.getGenero() + "', '" + p.getCor() + "', '" + currentTime + "', '" + p.getObservacao() + "');";          
+            String comando = "INSERT INTO dados_pets (nome_tutor, contato_tutor, cep, rua, numero_casa, bairro, nome_pet, raca, genero, cor, data_entrada, observacao, cpf, email, role, genero_user, foto_usuario) VALUES ('" + p.getNome_tutor() + "', '" + p.getContato_tutor() + "', '" + p.getCep() + "', '" + p.getRua() + "', " + p.getNumero_casa() + ", '" + p.getBairro() + "', '" + p.getNome_pet() + "', '" + p.getRaca() + "', '" + p.getGenero() + "',"
+                    + " '" + p.getCor() + "', '" + currentTime + "', '" + p.getObservacao() + "', '" + p.getCpf() + "', '" + p.getEmail() + "', '" + p.getRole() + "', '" + p.getGeneroUser() + "', '" + p.getFoto_usuario() + "');";      
             System.out.println(comando);
             st.executeUpdate(comando);
             resultado = true;
@@ -77,6 +84,11 @@ public ArrayList<Pet> verTodos() {
             p.setCor(rs.getString("cor"));
             p.setDate(rs.getDate("data_entrada"));
             p.setObservacao(rs.getString("observacao"));
+            p.setCpf(rs.getString("cpf"));
+            p.setEmail(rs.getString("email"));
+            p.setRole(rs.getString("role"));
+            p.setGeneroUser(GeneroUser.valueOf(rs.getString("genero_user")));
+            p.setFoto_usuario(rs.getBytes("foto_usuario"));
             pets.add(p);
         }
     } catch (Exception e) {
@@ -161,7 +173,9 @@ public ArrayList<Pet> buscarPetsFemeas() {
         
         try {
             this.conectar();
-            String comando = "UPDATE dados_pets SET nome_tutor='" + p.getNome_tutor() + "', contato_tutor='" + p.getContato_tutor() + "', nome_pet='" + p.getNome_pet() + "', raca='" + p.getRaca() + "', genero='" + p.getGenero() + "', cor='" + p.getCor() + "' WHERE id=" + p.getId() + ";";
+            String comando = "UPDATE dados_pets SET nome_tutor='" + p.getNome_tutor() + "', contato_tutor='" + p.getContato_tutor() + "', nome_pet='" 
+                    + p.getNome_pet() + "', raca='" + p.getRaca() + "', genero='" + p.getGenero() +
+                    "', cor='" + p.getCor() + "', cpf='" + p.getCpf() + "', email='" + p.getEmail() + "', genero_user='" + p.getGeneroUser()+ "', role='" + p.getRole() + "' WHERE id=" + p.getId() + ";";
             st.executeUpdate(comando);
             resultado = true;
         } catch (Exception e) {
